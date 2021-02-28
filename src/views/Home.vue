@@ -177,14 +177,16 @@ h2 {
       width: 100%;
       height: 100%;
       background-image: url("../assets/img/fig-1.svg");
-      background-size: 50% 60%;
+      background-size: 60% 60%;
       background-position: left bottom;
       .content {
-        width: 100%;
-        height: 150px;
-        background-size: cover;
-        // clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 68%);
-        padding-top: 25%;
+        width: 85%;
+        margin-top: -5%;
+        height: 300px;
+        background-size: cover !important;
+        padding-top: 28%;
+        clip-path: polygon(0 28%, 100% 0, 100% 100%, 0 70%);
+        background: $white;
         .action {
           justify-content: center;
         }

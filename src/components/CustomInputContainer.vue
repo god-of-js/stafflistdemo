@@ -1,5 +1,5 @@
 <template>
-  <div class="input-container">
+  <div :class="[err ? 'error' : '', 'input-container']">
     <slot name="icon" class="icon"></slot>
     <div class="margin"></div>
     <slot name="input"></slot>
@@ -8,7 +8,13 @@
 
 <script>
 export default {
-  name: "CustomInputContainer"
+  name: "CustomInputContainer",
+  props: {
+    err: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 
@@ -35,6 +41,9 @@ export default {
       color: $border-color;
     }
   }
+}
+.error {
+  border-color: red;
 }
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {

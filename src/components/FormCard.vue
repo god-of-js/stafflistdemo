@@ -36,11 +36,11 @@
         </svg>
       </button>
     </div>
-    <form action="">
+    <form @submit.prevent="submit">
       <custom-input-container class="mt">
         <template v-slot:icon> <select-img /></template>
         <template v-slot:input>
-          <select name="" id="">
+          <select name="" id="" v-model="data.project">
             <option disabled selected hidden>Project</option>
             <option
               v-for="(option, index) in arr"
@@ -56,24 +56,25 @@
         <custom-input-container class="mt">
           <template v-slot:icon> <date-img /></template>
           <template v-slot:input>
-            <input type="date" />
+            <input type="date" v-model="data.date" />
           </template>
         </custom-input-container>
       </div>
       <custom-input-container class="mt" :err="emailIsWrong">
-        <template v-slot:icon> <email-img /></template>
+        <template v-slot:icon> <email-img :err="emailIsWrong"/></template>
         <template v-slot:input>
           <input
             type="email"
             v-model="data.email"
             placeholder="Email Address"
+            :id="emailIsWrong ? 'err' : ''"
           />
         </template>
       </custom-input-container>
       <div class="checkbox-container mt">
         <div class="text">Clearance for</div>
         <div class="checkbox-outer">
-          <input type="checkbox" />
+          <input type="checkbox" v-model="data.clearanceForAll" />
           <span>All</span>
         </div>
       </div>
@@ -87,8 +88,14 @@
         </button>
       </div>
       <div v-if="additionalInformation">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <add-document />
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          v-model="data.additionalInformation"
+        ></textarea>
+        <add-document @sendFile="acceptFile" />
       </div>
       <custom-button class="mt" :inactive="emailCheck">SAVE</custom-button>
     </form>
@@ -116,7 +123,12 @@ export default {
         }
       ],
       data: {
-        email: ""
+        email: null,
+        file: null,
+        project: null,
+        clearanceForAll: null,
+        date: null,
+        additionalInformation: null
       },
       additionalInformation: false,
       emailIsWrong: false
@@ -142,10 +154,13 @@ export default {
         this.emailIsWrong = true;
         return;
       }
-      axios.post("https://someurl/post-request", this.data);
+      axios.post("https://someurl/post-request", this.data).then(() => {});
     },
     closeModal() {
       this.$store.commit("modalState", false);
+    },
+    acceptFile(file) {
+      this.data.file = file;
     }
   }
 };
@@ -207,6 +222,11 @@ input {
     color: $border-color;
   }
 }
+#err {
+  &::placeholder {
+    color: red;
+  }
+}
 .date-container {
   width: 50%;
 }
@@ -255,6 +275,7 @@ textarea {
     background: $white;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
   }
 }
 </style>

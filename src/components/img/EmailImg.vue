@@ -12,7 +12,7 @@
       <g
         id="test-02"
         transform="translate(-565.000000, -499.000000)"
-        fill="#000000"
+        :fill="err ? 'red ' : '#000000'"
         fill-rule="nonzero"
       >
         <g
@@ -30,7 +30,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    err: {
+      type: Boolean,
+      default: () => false
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

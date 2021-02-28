@@ -25,7 +25,6 @@ export default {
   methods: {
     // this method is being activated from the mixin pickFileMixin.
     handleDocument(file) {
-      console.log(file);
       this.fileName = file.name;
       this.$emit("sendFile", file);
     }
