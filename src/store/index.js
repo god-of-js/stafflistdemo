@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    modal: false
+  },
+  mutations: {
+    modalState(state, status) {
+      state.modal = status;
+    }
+  },
   actions: {},
   modules: {}
 });
