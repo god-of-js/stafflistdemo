@@ -61,7 +61,7 @@
         </custom-input-container>
       </div>
       <custom-input-container class="mt" :err="emailIsWrong">
-        <template v-slot:icon> <email-img :err="emailIsWrong"/></template>
+        <template v-slot:icon> <email-img :err="emailIsWrong" /></template>
         <template v-slot:input>
           <input
             type="email"
@@ -74,8 +74,12 @@
       <div class="checkbox-container mt">
         <div class="text">Clearance for</div>
         <div class="checkbox-outer">
-          <input type="checkbox" v-model="data.clearanceForAll" />
-          <span>All</span>
+          <input
+            type="checkbox"
+            name="clearance"
+            v-model="data.clearanceForAll"
+          />
+          <label for="clearance">All</label><br />
         </div>
       </div>
       <div class="additional-information">
@@ -93,6 +97,7 @@
           id=""
           cols="30"
           rows="10"
+          placeholder="Additional staff information"
           v-model="data.additionalInformation"
         ></textarea>
         <add-document @sendFile="acceptFile" />
@@ -119,8 +124,8 @@ export default {
       arr: [
         {
           value: "Emergency hospital",
-          text: "Emergency Hospital"
-        }
+          text: "Emergency Hospital",
+        },
       ],
       data: {
         email: null,
@@ -128,10 +133,10 @@ export default {
         project: null,
         clearanceForAll: null,
         date: null,
-        additionalInformation: null
+        additionalInformation: null,
       },
       additionalInformation: false,
-      emailIsWrong: false
+      emailIsWrong: false,
     };
   },
   components: {
@@ -141,12 +146,12 @@ export default {
     SelectImg,
     DateImg,
     EmailImg,
-    PlusImg
+    PlusImg,
   },
   computed: {
     emailCheck() {
       return !emailValidation.email.test(this.data.email);
-    }
+    },
   },
   methods: {
     submit() {
@@ -161,8 +166,8 @@ export default {
     },
     acceptFile(file) {
       this.data.file = file;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -174,6 +179,7 @@ export default {
   width: 30%;
   padding-top: 2%;
   padding-bottom: 2%;
+  overflow-y: auto;
   &-heading {
     display: flex;
     justify-content: space-between;
@@ -249,7 +255,7 @@ input {
 
   input[type="checkbox"] {
     width: initial;
-    margin-right: 20px;
+    margin-right: 10px;
   }
 }
 .additional-information {
@@ -266,16 +272,15 @@ input {
 textarea {
   outline: none;
   border: 1px solid $border-color;
-  width: 95%;
+  width: 90%;
   margin-top: 15px;
-  padding: 5px;
+  padding: 15px;
 }
 @media screen and (max-width: $mobile-break-point) {
   .form-card {
     background: $white;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
   }
 }
 </style>
