@@ -1,4 +1,4 @@
-// This is been done in a mixin incase it is to be called in another component.
+// This is been done in a mixin incase it is to be called in another component with different styling or format.
 
 export default {
   methods: {
