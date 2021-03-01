@@ -61,7 +61,7 @@
         </custom-input-container>
       </div>
       <custom-input-container class="mt" :err="emailIsWrong">
-        <template v-slot:icon> <email-img :err="emailIsWrong" /></template>
+        <template v-slot:icon> <email-img :err="emailIsWrong"/></template>
         <template v-slot:input>
           <input
             type="email"
@@ -124,8 +124,8 @@ export default {
       arr: [
         {
           value: "Emergency hospital",
-          text: "Emergency Hospital",
-        },
+          text: "Emergency Hospital"
+        }
       ],
       data: {
         email: null,
@@ -133,10 +133,10 @@ export default {
         project: null,
         clearanceForAll: null,
         date: null,
-        additionalInformation: null,
+        additionalInformation: null
       },
       additionalInformation: false,
-      emailIsWrong: false,
+      emailIsWrong: false
     };
   },
   components: {
@@ -146,12 +146,12 @@ export default {
     SelectImg,
     DateImg,
     EmailImg,
-    PlusImg,
+    PlusImg
   },
   computed: {
     emailCheck() {
       return !emailValidation.email.test(this.data.email);
-    },
+    }
   },
   methods: {
     submit() {
@@ -166,8 +166,8 @@ export default {
     },
     acceptFile(file) {
       this.data.file = file;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -210,23 +210,6 @@ export default {
 }
 .mt {
   margin-top: 15px;
-}
-select {
-  width: 95%;
-  height: 100%;
-  outline: none;
-  border: transparent;
-  background: $white;
-}
-input {
-  outline: none;
-  border: transparent;
-  width: 100%;
-  margin-left: 15px;
-  background: $white;
-  ::placeholder {
-    color: $border-color;
-  }
 }
 #err {
   &::placeholder {

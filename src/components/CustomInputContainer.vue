@@ -36,10 +36,18 @@ export default {
     outline: none;
     border: transparent;
     width: 100%;
+    background-color: $white;
     margin-left: 15px;
     ::placeholder {
       color: $border-color;
     }
+  }
+  select {
+    width: 95%;
+    height: 100%;
+    outline: none;
+    border: transparent;
+    background: $white;
   }
 }
 .error {
