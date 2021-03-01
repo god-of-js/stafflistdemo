@@ -41,7 +41,7 @@
         <template v-slot:icon> <select-img /></template>
         <template v-slot:input>
           <select name="" id="" v-model="data.project">
-            <option disabled selected hidden>Project</option>
+            <option disabled selected hidden value="">Project</option>
             <option
               v-for="(option, index) in arr"
               :key="index"
@@ -71,8 +71,8 @@
           />
         </template>
       </custom-input-container>
-      <div class="checkbox-container mt">
-        <div class="text">Clearance for</div>
+      <fieldset class="checkbox-container mt">
+        <legend class="text">Clearance for</legend>
         <div class="checkbox-outer">
           <input
             type="checkbox"
@@ -81,14 +81,16 @@
           />
           <label for="clearance">All</label><br />
         </div>
-      </div>
+      </fieldset>
       <div class="additional-information">
         <button
           type="text"
           @click.prevent="additionalInformation = !additionalInformation"
           class="text"
         >
-          <plus-img /> <span>Additional Information</span>
+          <plus-img v-if="!additionalInformation" />
+          <span v-else class="dash">-</span>
+          <span>Additional Information</span>
         </button>
       </div>
       <div v-if="additionalInformation">
@@ -177,9 +179,10 @@ export default {
 .form-card {
   background: $white;
   width: 30%;
-  padding-top: 2%;
+  padding-top: 1%;
   padding-bottom: 2%;
   overflow-y: auto;
+  max-height: 70%;
   &-heading {
     display: flex;
     justify-content: space-between;
@@ -204,6 +207,11 @@ export default {
 .close-btn:hover {
   background-color: $dark-color;
   color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
   #test-02 {
     fill: $white;
   }
@@ -226,7 +234,7 @@ export default {
   background: $white;
   box-sizing: border-box;
   .text {
-    margin-left: 50px;
+    margin-left: 0px;
     text-align: left;
     font-size: 0.9em;
   }
@@ -259,11 +267,15 @@ textarea {
   margin-top: 15px;
   padding: 15px;
 }
+.dash {
+  font-size: 24px;
+}
 @media screen and (max-width: $mobile-break-point) {
   .form-card {
     background: $white;
     width: 100%;
     height: 100%;
+    max-height: 100%;
   }
 }
 </style>

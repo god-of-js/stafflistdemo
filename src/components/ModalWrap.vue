@@ -1,14 +1,13 @@
 <template>
   <div id="modal">
-     <slot />
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
   name: "ModalWrap",
-  components: {
-  },
+  components: {}
 };
 </script>
 

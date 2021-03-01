@@ -1,9 +1,9 @@
 <template>
-  <div :class="[err ? 'error' : '', 'input-container']">
+  <fieldset :class="[err ? 'error' : '', 'input-container']">
     <slot name="icon" class="icon"></slot>
     <div class="margin"></div>
     <slot name="input"></slot>
-  </div>
+  </fieldset>
 </template>
 
 <script>

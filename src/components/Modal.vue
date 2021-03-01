@@ -11,15 +11,14 @@ export default {
   name: "Modal",
   data: () => {
     return {
-      activeModal: "FormCard",
+      activeModal: "FormCard"
     };
   },
   components: {
     FormCard,
-    ModalWrap,
-  },
+    ModalWrap
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

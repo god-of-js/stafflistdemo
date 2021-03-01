@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <modal v-if="modalStatus" />
-    <div class="sl-logo-container">
+    <section class="sl-logo-container">
       <svg
         width="57px"
         height="77px"
@@ -51,8 +51,8 @@
           </g>
         </g>
       </svg>
-    </div>
-    <div class="content-container">
+    </section>
+    <section class="content-container">
       <div class="content">
         <h2>Level Up. Go Stafflist.</h2>
         <p>
@@ -66,7 +66,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -167,7 +167,7 @@ h2 {
   .home {
     flex-direction: column;
     background-image: url("../assets/img/fig-2.svg");
-    background-size: 100vw 80vh;
+    background-size: 100% 80%;
     background-repeat: no-repeat;
     background-position: top center;
     .sl-logo-container {
@@ -177,7 +177,7 @@ h2 {
       width: 100%;
       height: 100%;
       background-image: url("../assets/img/fig-1.svg");
-      background-size: 60% 60%;
+      background-size: 60% 70%;
       background-position: left bottom;
       .content {
         width: 85%;

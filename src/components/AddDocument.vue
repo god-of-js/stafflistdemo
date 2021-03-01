@@ -39,6 +39,7 @@ export default {
   border: 2px solid $border-color;
   background: transparent;
   border-radius: 4px;
+  cursor: pointer;
   padding: 6px;
   width: 150px;
   display: flex;
