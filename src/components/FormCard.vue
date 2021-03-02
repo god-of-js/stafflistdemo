@@ -79,7 +79,7 @@
             name="clearance"
             v-model="data.clearanceForAll"
           />
-          <label for="clearance">All</label><br />
+          <label for="clearance">All</label>
         </div>
       </fieldset>
       <div class="additional-information">

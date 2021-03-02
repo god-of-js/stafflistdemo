@@ -5,7 +5,7 @@
     :disabled="inactive"
     v-on="$listeners"
   >
-      <slot />
+    <slot />
   </button>
 </template>
 

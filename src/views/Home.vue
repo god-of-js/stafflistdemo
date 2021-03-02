@@ -61,7 +61,7 @@
         </p>
         <div class="action">
           <button @click="openModal">
-            <img :src="menuBtn" alt="click button" width="10" />
+            <img :src="menuIcon" alt="click button" width="10" />
             <span>Just Click me</span>
           </button>
         </div>
@@ -77,7 +77,7 @@ export default {
   name: "Home",
   data: () => {
     return {
-      menuBtn: IconBar,
+      menuIcon: IconBar,
       modal: false
     };
   },
