@@ -1,6 +1,6 @@
 <template>
-  <div class="form-card">
-    <div class="form-card-heading">
+  <main class="form-card">
+    <header class="form-card-heading">
       <span>Add Vacancy</span>
       <button class="close-btn" @click="closeModal">
         <svg
@@ -35,7 +35,7 @@
           </g>
         </svg>
       </button>
-    </div>
+    </header>
     <form @submit.prevent="submit">
       <custom-input-container class="mt">
         <template v-slot:icon> <select-img /></template>
@@ -52,14 +52,14 @@
           </select></template
         >
       </custom-input-container>
-      <div class="date-container">
+      <fieldset class="date-container">
         <custom-input-container class="mt">
           <template v-slot:icon> <date-img /></template>
           <template v-slot:input>
             <input type="date" v-model="data.date" />
           </template>
         </custom-input-container>
-      </div>
+      </fieldset>
       <custom-input-container class="mt" :err="emailIsWrong">
         <template v-slot:icon> <email-img :err="emailIsWrong"/></template>
         <template v-slot:input>
@@ -93,7 +93,7 @@
           <span>Additional Information</span>
         </button>
       </div>
-      <div v-if="additionalInformation">
+      <section v-if="additionalInformation">
         <textarea
           name=""
           id=""
@@ -103,10 +103,10 @@
           v-model="data.additionalInformation"
         ></textarea>
         <add-document @sendFile="acceptFile" />
-      </div>
+      </section>
       <custom-button class="mt" :inactive="emailCheck">SAVE</custom-button>
     </form>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -226,6 +226,8 @@ export default {
 }
 .date-container {
   width: 50%;
+  border: transparent;
+  padding: 0%;
 }
 .checkbox-container {
   border: 1px solid $border-color;
@@ -243,7 +245,6 @@ export default {
     align-items: center;
     font-size: 0.9em;
   }
-
   input[type="checkbox"] {
     width: initial;
     margin-right: 10px;

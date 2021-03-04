@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <modal v-if="modalStatus" />
     <section class="sl-logo-container">
       <svg
@@ -59,15 +59,15 @@
           An administration & collaboration tool - Stafflist is the intersecting
           point of all the stakeholders in the staffing process.
         </p>
-        <div class="action">
+        <article class="action">
           <button @click="openModal">
             <img :src="menuIcon" alt="click button" width="10" />
             <span>Just Click me</span>
           </button>
-        </div>
+        </article>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
