@@ -1,19 +1,65 @@
 <template>
   <fieldset :class="[err ? 'error' : '', 'input-container']">
-    <slot name="icon" class="icon"></slot>
-    <div class="margin"></div>
-    <slot name="input"></slot>
+    <component :is="img" class="margin" />
+    <input
+      :type="type"
+      :placeholder="placeholder"
+      v-model="value"
+      @input="$emit('data', value)"
+      v-if="elementType === 'input'"
+    />
+
+    <select name="" id="" v-model="value" v-else @change="$emit('data', value)">
+      <option
+        v-for="(option, index) in optionsArr"
+        :key="index"
+        :value="option.value"
+      >
+        {{ option.text }}
+      </option>
+    </select>
   </fieldset>
 </template>
 
 <script>
+import SelectImg from "./img/SelectImg";
+import DateImg from "./img/DateImg";
+import EmailImg from "./img/EmailImg";
 export default {
   name: "CustomInputContainer",
   props: {
     err: {
       type: Boolean,
       default: false
+    },
+    type: {
+      type: String,
+      default: "text"
+    },
+    img: {
+      type: String,
+      default: ""
+    },
+    placeholder: {
+      type: String
+    },
+    elementType: {
+      type: String,
+      default: "input"
+    },
+    optionsArr: {
+      type: Array
     }
+  },
+  data: () => {
+    return {
+      value: ""
+    };
+  },
+  components: {
+    SelectImg,
+    DateImg,
+    EmailImg
   }
 };
 </script>

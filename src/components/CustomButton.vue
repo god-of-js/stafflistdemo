@@ -1,7 +1,7 @@
 <template>
   <button
     id="btn"
-    :class="[inactive ? 'btn-disabled ' : '']"
+    :class="[inactive ? 'btn-disabled ' : '', setClass]"
     :disabled="inactive"
     v-on="$listeners"
   >
@@ -20,6 +20,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    setClass: {
+      type: String,
+      default: "default-button"
     }
   }
 };
@@ -28,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/colors.scss";
 
-#btn {
+.default-button {
   width: 100%;
   padding: 10px;
   height: 56px;
@@ -47,5 +51,28 @@ export default {
 .btn-disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.close-btn:hover {
+  background-color: $dark-color;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  ::v-deep {
+    #test-02 {
+      fill: $white;
+    }
+  }
+}
+.text {
+  font-size: 0.9em;
+  background: transparent;
+  border: transparent;
+  outline: none;
+  cursor: pointer;
+  float: left;
 }
 </style>
